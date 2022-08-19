@@ -12,7 +12,7 @@ from rest_framework.response import Response
 class AllRecordsView(APIView):
 
     def get(self, request):
-        records = Record.objects.all()
+        records = Record.objects.all().order_by('date')
         serializer = RecordSerializer(records, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -20,6 +20,7 @@ class RecordView(APIView):
 
     def post(self, request):
         data = request.data
+        
         serializer = RecordSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
