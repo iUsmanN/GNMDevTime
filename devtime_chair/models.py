@@ -5,5 +5,5 @@ from django.db import models
 #     name = models.CharField(max_length=50)
 
 class Record(models.Model):
-    time = models.DateTimeField()
-    developer = models.CharField(max_length=50)
+    date = models.DateTimeField()
+    name = models.CharField(max_length=50)
